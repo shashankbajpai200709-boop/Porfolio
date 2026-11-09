@@ -1,0 +1,174 @@
+/* =============================================================================
+   SHASHANK BAJπ — ANIMATION SYSTEM (animations.css)
+   =============================================================================
+   Handles cinematic entrance effects, smooth transitions, scroll triggers,
+   3D tilt perspectives, custom cursor physics and glowing orange accents.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. CUSTOM INTERACTIVE CURSOR (DESKTOP ONLY)
+   ----------------------------------------------------------------------------- */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-orange);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 0 12px var(--accent-orange);
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(255, 106, 0, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hovering on links or buttons enlarges the follower */
+body.cursor-hover .custom-cursor {
+  width: 14px;
+  height: 14px;
+  background-color: #FFFFFF;
+}
+
+body.cursor-hover .custom-cursor-follower {
+  width: 56px;
+  height: 56px;
+  border-color: var(--accent-orange);
+  background-color: rgba(255, 106, 0, 0.08);
+}
+
+@media (pointer: coarse) {
+  /* Hide custom cursor on touch devices to avoid lagging touch interactions */
+  .custom-cursor,
+  .custom-cursor-follower {
+    display: none !important;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   2. REVEAL ANIMATIONS (SCROLL-TRIGGERED & ENTRANCE)
+   ----------------------------------------------------------------------------- */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  will-change: opacity;
+}
+
+.reveal-fade-in.is-revealed {
+  opacity: 1;
+}
+
+/* Character stagger animation in the hero */
+.char-span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px) rotate(4deg);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.char-span.active {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+/* -----------------------------------------------------------------------------
+   3. KEYFRAME ANIMATIONS
+   ----------------------------------------------------------------------------- */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes orangePulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 106, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(255, 106, 0, 0.45);
+  }
+}
+
+@keyframes shimmerGlow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Floating badge class */
+.floating-element {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+/* Orange aura pulse */
+.orange-glow-pulse {
+  animation: orangePulse 3s ease-in-out infinite;
+}
+
+/* -----------------------------------------------------------------------------
+   4. MAGNETIC HOVER UTILITIES
+   ----------------------------------------------------------------------------- */
+.magnetic-target {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* -----------------------------------------------------------------------------
+   5. REDUCED MOTION PREFERENCES
+   Respects user operating system accessibility settings.
+   ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-fade-up,
+  .char-span {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #three-canvas-container {
+    opacity: 0.5 !important;
+  }
+}
+

@@ -1,0 +1,270 @@
+/* =============================================================================
+   SHASHANK BAJπ — RESPONSIVE STYLESHEET (responsive.css)
+   =============================================================================
+   Ensures seamless, tailored rendering across all form factors:
+   - Ultra-wide desktops & laptops
+   - Tablets & iPads (Portrait & Landscape)
+   - Smartphones (Android & iPhone)
+   Prevents horizontal overflow and adjusts font scales and touch targets.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. LAPTOPS & SMALL DESKTOPS (<= 1200px)
+   ----------------------------------------------------------------------------- */
+@media screen and (max-width: 1200px) {
+  :root {
+    --section-padding-y: 100px;
+  }
+
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero-name-row {
+    font-size: clamp(3rem, 10vw, 7.5rem);
+  }
+
+  .about-grid {
+    gap: 40px;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   2. TABLETS & LARGE MOBILE (<= 992px)
+   ----------------------------------------------------------------------------- */
+@media screen and (max-width: 992px) {
+  :root {
+    --section-padding-y: 80px;
+  }
+
+  /* Hamburger Menu Toggle Display */
+  .mobile-toggle {
+    display: flex;
+  }
+
+  /* Transform standard links into a slide-out mobile drawer */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(320px, 85vw);
+    height: 100vh;
+    background: #0e0e0e;
+    border-left: 1px solid var(--border-subtle);
+    padding: 100px 32px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+    transition: right 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+    z-index: 1005;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .nav-cta {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  /* About Grid Stacks Vertically */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-stats {
+    gap: 16px;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 3D Canvas opacity slightly lowered for mobile readability */
+  #three-canvas-container {
+    opacity: 0.7;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   3. MOBILE PHONES (<= 768px)
+   ----------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  :root {
+    --section-padding-y: 70px;
+  }
+
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* Hero Section Mobile Adjustments */
+  #hero {
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
+  .hero-meta-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .hero-name-row {
+    font-size: clamp(2.6rem, 12vw, 4.4rem);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title-role {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+
+  .hero-scroll-indicator {
+    display: none; /* Hide scroll indicator on small screens to avoid clutter */
+  }
+
+  /* About Section Mobile */
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .about-card-visual {
+    padding: 24px;
+  }
+
+  /* Roadmap Timeline Mobile */
+  .roadmap-timeline {
+    padding-left: 28px;
+  }
+
+  .roadmap-timeline::before {
+    left: 8px;
+  }
+
+  .milestone-dot {
+    left: -28px;
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
+  }
+
+  .milestone-card {
+    padding: 20px;
+  }
+
+  .milestone-title {
+    font-size: 1.15rem;
+  }
+
+  /* Education Card Mobile */
+  .education-card {
+    padding: 28px 20px;
+  }
+
+  .edu-degree {
+    font-size: 1.4rem;
+  }
+
+  .edu-spec {
+    font-size: 1rem;
+  }
+
+  .edu-college-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* Contact Section Mobile */
+  .contact-card {
+    padding: 32px 20px;
+  }
+
+  .email-copy-box {
+    width: 100%;
+    flex-direction: column;
+    padding: 14px 18px;
+    text-align: center;
+    font-size: 0.88rem;
+    word-break: break-all;
+  }
+
+  .social-links-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .social-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Footer Mobile */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   4. EXTRA SMALL SCREENS (<= 420px)
+   ----------------------------------------------------------------------------- */
+@media screen and (max-width: 420px) {
+  .hero-name-row {
+    font-size: 2.4rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .project-content {
+    padding: 20px;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+  }
+}
+
