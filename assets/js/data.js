@@ -124,7 +124,7 @@ const PORTFOLIO_DATA = {
         status: "Completed",
         statusColor: "#4caf50", // Green
         image: "assets/images/project-1.png",
-        githubUrl: "https://github.com/shashank-bajpai", // Replace with your real repo link
+        githubUrl: "https://github.com/shashankbajpai200709-boop", // Replace with your real repo link
         liveUrl: "#", // Leave as "#" if no live link exists yet
         featured: true
       },
@@ -137,7 +137,7 @@ const PORTFOLIO_DATA = {
         status: "In Progress",
         statusColor: "#FF6A00", // Orange
         image: "assets/images/project-2.png",
-        githubUrl: "https://github.com/shashank-bajpai",
+        githubUrl: "https://github.com/shashankbajpai200709-boop",
         liveUrl: "#",
         featured: true
       },
@@ -150,8 +150,8 @@ const PORTFOLIO_DATA = {
         status: "Live & Evolving",
         statusColor: "#00E5FF", // Cyan
         image: "assets/images/project-1.png",
-        githubUrl: "https://github.com/shashank-bajpai",
-        liveUrl: "#",
+        githubUrl: "https://github.com/shashankbajpai200709-boop/Porfolioi",
+        liveUrl: "https://porfolio-shashankbajpai.vercel.app/",
         featured: true
       }
     ]
